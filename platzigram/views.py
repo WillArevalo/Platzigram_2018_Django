@@ -30,6 +30,7 @@ Podemos tener acceso desde el debuger al request y sus metodos:
 -GET
 -PATH
 Etc
+
 """
 
 def say_hi(request, name, age):
