@@ -1,4 +1,5 @@
-#from django.contrib import admin
+#Django
+from django.contrib import admin
 from django.urls import path
 
 
@@ -10,6 +11,8 @@ from posts import views as posts_views
 
 
 urlpatterns = [
+	#admin
+	path('admin/',admin.site.urls),
 	#main
     path('hello-world/',local_views.hello_world),
     path('hi/', local_views.hi),
