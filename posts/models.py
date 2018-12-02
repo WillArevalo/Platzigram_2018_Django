@@ -2,6 +2,7 @@
 
 # Django
 from django.db import models
+#from django.contrib.auth.models import User
 from users.models import Profile
 
 
@@ -19,7 +20,7 @@ class Post(models.Model):
 
     def __str__(self):
         """Return title and username"""
-        return "{} by @{}".format(self.title, self.profile.username)
+        return "{} by @{}".format(self.title, self.profile.user.username)
 
 
 # class User(models.Model):
