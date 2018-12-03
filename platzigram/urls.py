@@ -22,8 +22,9 @@ urlpatterns = [
     path('hello-world/', local_views.hello_world, name='hello_world'),
     path('hi/', local_views.hi, name='hi'),
     path('say_hi/<str:name>/<int:age>/', local_views.say_hi, name='say_hi'),
-    # Login
+    # Login & Logout
     path('users/login/', users_views.login_view, name='login'),
+    path('users/logout', login_required(users_views.logout_view), name='logout'),
     # posts
     path('posts/', login_required(posts_views.list_posts), name='feed'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

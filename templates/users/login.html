@@ -6,13 +6,30 @@
 
 {% block container %}
 	{% if error %}
-		<div class="alert alert-danger" role="alert">{{error}}</div>
+		<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			{{error}}
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    			<span aria-hidden="true">&times;</span>
+  			</button>
+		</div>
+	{% endif %}
+	{% if message %}
+		<div class="alert alert-info alert-dismissible fade show" role="alert">
+			{{message}}
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    			<span aria-hidden="true">&times;</span>
+  			</button>
+		</div>
 	{% endif %}
 	<form method="POST" action="{% url 'login' %}">
 		{% csrf_token %}
-		<input type="text" placeholder="Username" name="username" class="mb-2 rounded" />
-		<input type="password" placeholder="Password" name="password" class="mb-2 rounded" />
-		<br>
-		<button type="submit" class="btn btn-outline-info">Sign in!</button>	
+		<div class="form-group">
+			<input type="text" class="form-control" placeholder="Username" name="username">
+		</div>
+		<div class="form-group">
+			<input type="password" class="form-control" placeholder="Password" name="password">
+		</div>
+
+		<button type="submit" class="btn btn-outline-info btn-block mt-5"><i class="lead">Sign in!</i></button>	
 	</form>
 {% endblock container %}

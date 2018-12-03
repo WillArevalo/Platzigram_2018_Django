@@ -1,7 +1,7 @@
 """User views."""
 
 # Django
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -23,3 +23,13 @@ def login_view(request):
                 {'error': 'Invalid username or password.'}
             )
     return render(request, 'users/login.html')
+
+
+def logout_view(request):
+    """Logout view"""
+    logout(request)
+    return render(
+        request,
+        'users/login.html',
+        {'message': 'Now, You are logout.'}
+    )
