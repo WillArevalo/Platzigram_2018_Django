@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block head_content %}
+    <title>@{{request.user.username}} - Platzigram</title>
+{% endblock head_content %}
+
+{% block container %}
+	<h1 class="mt-5 text-info">@{{request.user.username}}</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero reiciendis dolore odio. Recusandae placeat, quas debitis veritatis, deserunt earum nostrum provident, adipisci dolorem sint quia. Inventore iusto exercitationem dolorem harum?</p>
+{% endblock container %}

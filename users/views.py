@@ -48,10 +48,9 @@ def signup_view(request):
         return render(
             request,
             'users/login.html',
-            {'message': 'Your registration was successful. \n Sign in for continue.'}
+            {'message': 'Your registration was successful. Sign in for continue.'}
         )
     return render(request, 'users/signup.html', {'message': False})
-
 
 
 def login_view(request):
@@ -80,3 +79,13 @@ def logout_view(request):
         'users/login.html',
         {'message': 'Now, You are logout.'}
     )
+
+def update_profile(request):
+    """Update a user's profile view."""
+    if request.method == 'POST':
+        website = request.POST['website']
+        biography = request.POST['biography']
+        phone_number = request.POST['phone_number']
+        picture = request.POST['image']
+
+    return render(request, 'users/update_profile.html', {'message': False})
