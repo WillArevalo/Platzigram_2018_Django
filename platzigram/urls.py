@@ -22,7 +22,8 @@ urlpatterns = [
     path('hello-world/', local_views.hello_world, name='hello_world'),
     path('hi/', local_views.hi, name='hi'),
     path('say_hi/<str:name>/<int:age>/', local_views.say_hi, name='say_hi'),
-    # Login & Logout
+    # Sessions
+    path('users/signup/', users_views.signup_view, name='signup'),
     path('users/login/', users_views.login_view, name='login'),
     path('users/logout', login_required(users_views.logout_view), name='logout'),
     # posts
