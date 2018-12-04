@@ -58,7 +58,7 @@ docs/_build/
 target/
 
 # DB
-db.sqlite3
+./db.sqlite3
 
 # Folders
-Media/
+./Media/
