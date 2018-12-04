@@ -28,5 +28,7 @@ urlpatterns = [
     path('users/logout', login_required(users_views.logout_view), name='logout'),
     path('users/me/profile/', login_required(users_views.update_profile), name='update_profile'),
     # posts
-    path('posts/', login_required(posts_views.list_posts), name='feed'),
+    path('', login_required(posts_views.list_posts), name='feed'),
+    path('posts/new/', login_required(posts_views.create_post), name='create_post')
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
