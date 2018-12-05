@@ -22,24 +22,7 @@
 	{% endif %}
 	<form method="POST" action="{% url 'signup' %}">
 		{% csrf_token %}
-		<div class="form-group">
-			<input type="text" class="form-control" placeholder="Username" name="username" required="True">
-		</div>
-		<div class="form-group">
-			<input type="password" class="form-control" placeholder="Password" name="passwd" required="True">
-		</div>
-		<div class="form-group">
-			<input type="password" class="form-control" placeholder="Password confirmation" name="passwd_confirmation" required="True">
-		</div>
-		<div class="form-group">
-			<input type="text" class="form-control" placeholder="First name" name="first_name" required="True">
-		</div>
-		<div class="form-group">
-			<input type="text" class="form-control" placeholder="Last name" name="last_name" required="True">
-		</div>
-		<div class="form-group">
-			<input type="email" class="form-control" placeholder="Email Address" name="email" required="True">
-		</div>
+		{{form.as_p}}
 
 		<button type="submit" class="btn btn-outline-success btn-block mt-5"><i class="lead">Register!</i></button>	
 	</form>
