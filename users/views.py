@@ -4,13 +4,6 @@
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 
-# Exceptions
-from django.db.utils import IntegrityError
-
-# Models
-from django.contrib.auth.models import User
-from users.models import Profile
-
 # Forms
 from users.forms import ProfileForm, SignupForm
 

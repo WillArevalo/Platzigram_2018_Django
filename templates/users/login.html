@@ -21,7 +21,7 @@
   			</button>
 		</div>
 	{% endif %}
-	<form method="POST" action="{% url 'login' %}">
+	<form method="POST" action="{% url 'users:login' %}">
 		{% csrf_token %}
 		<div class="form-group">
 			<input type="text" class="form-control" placeholder="Username" name="username">
@@ -33,6 +33,6 @@
 		<button type="submit" class="btn btn-outline-info btn-block mt-5"><i class="lead">Sign in!</i></button>	
 	</form>
 	<div class="mx-auto mt-1" style="width: 300px;">
-		<p>Not registered? <a href="{% url "signup" %}">Create an account</a></p>
+		<p>Not registered? <a href="{% url "users:signup" %}">Create an account</a></p>
 	</div>
 {% endblock container %}
