@@ -3,7 +3,6 @@
 # Django
 from django.urls import path
 from django.contrib.auth.decorators import login_required
-from django.views.generic import TemplateView
 
 # Views
 from users import views
@@ -22,7 +21,7 @@ urlpatterns = [
         name='login'
     ),
     path(
-        route='logout',
+        route='logout/',
         view=login_required(views.logout_view),
         name='logout'
     ),
@@ -34,8 +33,8 @@ urlpatterns = [
 
     # Posts
     path(
-        route='<str:username>/',
-        view=login_required(TemplateView.as_view(template_name='users/detail.html')),
+        route='<str:username_slug>/',
+        view=login_required(views.UserDetailView.as_view()),
         name='detail'
     ),
 ]

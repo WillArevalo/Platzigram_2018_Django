@@ -2,6 +2,7 @@
 
 # Django
 from django.shortcuts import render, redirect
+from django.views.generic import ListView
 # from django.http import HttpResponse
 
 # Models
@@ -17,15 +18,17 @@ def create_post(request):
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('feed')
+            return redirect('posts:feed')
     else:
         form = PostForm()
     
     return render(request, 'posts/new.html', {'form':form})
 
 
-def list_posts(request):
-    """List existing posts."""
-    posts = Post.objects.all().order_by('-created')
-    # return render(request,'template', {context})
-    return render(request, 'posts/feed.html', {'posts': posts})
+class PostFeedView(ListView):
+    """Return all published posts."""
+    template_name = 'posts/feed.html'
+    model = Post
+    ordering = ('-created',)
+    paginate_by = 2
+    context_object_name = 'posts'

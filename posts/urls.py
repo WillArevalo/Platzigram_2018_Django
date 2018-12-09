@@ -11,7 +11,7 @@ from posts import views
 urlpatterns = [
     path(
         route='',
-        view=login_required(views.list_posts),
+        view=login_required(views.PostFeedView.as_view()),
         name='feed'
     ),
 
