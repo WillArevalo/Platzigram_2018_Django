@@ -2,7 +2,7 @@
 
 # Django
 from django.shortcuts import render, redirect
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 # from django.http import HttpResponse
 
 # Models
@@ -32,3 +32,12 @@ class PostFeedView(ListView):
     ordering = ('-created',)
     paginate_by = 2
     context_object_name = 'posts'
+
+
+class PostDetailView(DetailView):
+    """Detail view posts"""
+    template_name = 'posts/detail.html'
+    slug_field = 'id'
+    slug_url_kwarg = 'post_id'
+    queryset = Post.objects.all()
+    context_object_name = 'post'

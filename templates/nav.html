@@ -20,7 +20,7 @@
                 </li>
                 
                 <li class="nav-item nav-icon">
-                    <a href="{% url "users:detail" request.user %}">
+                    <a href="{% url "users:detail" request.user.username %}">
                         <i class="lead">@{{request.user.username}}</i>
                     </a>
                 </li>
