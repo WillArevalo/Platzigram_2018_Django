@@ -17,12 +17,12 @@ urlpatterns = [
     ),
     path(
         route='login/',
-        view=views.login_view,
+        view=views.LoginView.as_view(),
         name='login'
     ),
     path(
         route='logout/',
-        view=login_required(views.logout_view),
+        view=views.LogoutView.as_view(),
         name='logout'
     ),
     path(
