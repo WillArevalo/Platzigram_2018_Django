@@ -1,8 +1,9 @@
 """Posts Views"""
 
 # Django
-from django.shortcuts import render, redirect
-from django.views.generic import ListView, DetailView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 # from django.http import HttpResponse
 
 # Models
@@ -12,17 +13,19 @@ from posts.models import Post
 from posts.forms import PostForm
 
 
-def create_post(request):
-    """Create new post view"""
-    if request.method == 'POST':
-        form = PostForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('posts:feed')
-    else:
-        form = PostForm()
-    
-    return render(request, 'posts/new.html', {'form':form})
+# LoginRequired into Views
+class CreatePostView(LoginRequiredMixin, CreateView):
+    """Create New Post View"""
+    template_name = 'posts/new.html'
+    form_class = PostForm
+    success_url = reverse_lazy('posts:feed')
+    context_object_name = 'form'
+
+    def get_context_data(self, **kwargs):
+        """Add User and profile to context."""
+        context = super().get_context_data(**kwargs)
+        context['profile'] = self.request.user.profile
+        return context
 
 
 class PostFeedView(ListView):
@@ -30,7 +33,7 @@ class PostFeedView(ListView):
     template_name = 'posts/feed.html'
     model = Post
     ordering = ('-created',)
-    paginate_by = 2
+    paginate_by = 4
     context_object_name = 'posts'
 
 

@@ -27,7 +27,6 @@
                         <p class="ml-4"><input type="file" name="picture" ></p>
                     </div>
                 </div>
-
                 {% for error in form.picture.errors %}
                 	<div class="alert alert-danger"><b>Picture:</b> {{error}}</div>
                 {% endfor %}
@@ -60,8 +59,7 @@
                         {% if form.biography.errors %}
                         	is-invalid
                         {% endif %}" 
-                    	name="biography">{% if form.errors %}{{form.biography.value}}{% else %}{{ user.profile.biography }}{% endif %}
-                	</textarea>
+                    	name="biography">{% if form.errors %}{{form.biography.value}}{% else %}{{user.profile.biography }}{% endif %}</textarea>
                 	<div class="invalid-feedback">{% for error in form.biography.errors %}{{error}}{% endfor %}</div>
                 </div>
 

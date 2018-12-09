@@ -4,9 +4,9 @@
     <title>Signup - Platzigram</title>
 {% endblock head_content %}
 {% block container %}
-	{% if error %}
+	{% if form.errors %}
 		<div class="alert alert-danger alert-dismissible fade show" role="alert">
-			{{error}}
+			{{form.errors}}
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
     			<span aria-hidden="true">&times;</span>
   			</button>
@@ -22,7 +22,14 @@
 	{% endif %}
 	<form method="POST" action="{% url 'users:signup' %}">
 		{% csrf_token %}
-		{{form.as_p}}
+		{% for input in form %}
+			<div class="form-group">
+				{{input}}
+			</div>
+            <div class="invalid-feedback">
+                {% for error in input.errors %}{{ error }}{% endfor %}
+            </div>
+		{% endfor %}
 
 		<button type="submit" class="btn btn-outline-success btn-block mt-5"><i class="lead">Register!</i></button>	
 	</form>
